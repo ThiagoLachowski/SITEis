@@ -6,20 +6,37 @@
   font-family: "Segoe UI", sans-serif;
 }
 
+
 :root {
+  /*
   --dark-bg: #000000;
   --darker-bg: #000000;
+  */
   --accent:#146da8;
   --accent-glow: rgba(28, 224, 250, 0.4);
   --text: #f0f0f0;
 }
 
 body {
-  background-color: var(--dark-bg);
-  color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+
+  background: url('img/fundo.png') no-repeat center center fixed;
+  background-size: cover; /* faz preencher a tela */
+  color: #fff;
 }
+
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1; /* fica atrás dos bagui da tela */
+}
+
 
 .navbar {
   position: fixed;
@@ -121,6 +138,7 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    top: 10px
 }
 
 .cta-button:hover {
@@ -133,6 +151,106 @@ body {
   font-size: 4rem;
   margin-bottom: 1.5rem;
   background: linear-gradient(45deg,var(--accent) 30%, #ffffff 70%);
-    -webkit-background-clip: text;
+    -webkit-background-clip: text; /*não entendi o erro aq mas enquanto nao for um problema de verdade, vou dexiar assim*/
     -webkit-text-fill-color: transparent;
 }
+
+/*estilo das imagens*/
+
+.skill-card .card-img {
+  width: 100%;
+  height: 150px;       
+  object-fit: cover;    
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+
+/* --- Estilos para a página de cada curso --- */
+.course-detail {
+  padding: 3rem 5%;
+  background: var(--darker-bg);
+  min-height: 80vh;
+  color: var(--text);
+}
+
+.course-title {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  margin-bottom: 1.2rem;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+.course-description {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.18));
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 0.8rem;
+}
+
+
+@media (max-width: 600px) {
+  .course-title { font-size: 1.6rem; }
+  .course-detail { padding: 2rem 3%; }
+}
+
+
+/* --- Botão Playlist --- */
+.playlist-row {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+
+.playlist-button {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent) 0%, #00e5ff 100%);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(20,109,168,0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+
+.playlist-button:hover,
+.playlist-button:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 34px rgba(20,109,168,0.28);
+  outline: none;
+}
+
+
+
+@media (max-width: 480px) {
+  .playlist-row {
+    justify-content: center;
+  }
+  .playlist-button {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+}
+
+

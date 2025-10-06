@@ -14,10 +14,24 @@
 }
 
 body {
-  background-color: var(--dark-bg);
-  color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+
+  background: url('img/fundo.png') no-repeat center center fixed;
+  background-size: cover; /* faz preencher a tela */
+  color: #fff;
+}
+
+/*esse body:before é pra naobugar o contrate do fundo, nao deletem pelo amor de Deus 🐜*/
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1; /* fica atrás dos bagui da tela */
 }
 
 /* Estilos para a barra de navegação */
@@ -119,7 +133,7 @@ body {
   font-size: 4rem;
   margin-bottom: 1.5rem;
   background: linear-gradient(45deg,var(--accent) 30%, #ffffff 70%);
-    -webkit-background-clip: text;
+    -webkit-background-clip: text; /*não entendi o erro aq mas enquanto nao for um problema de verdade, vou dexiar assim*/
     -webkit-text-fill-color: transparent;
 }
 

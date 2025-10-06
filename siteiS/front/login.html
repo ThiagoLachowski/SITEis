@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login - SITEis</title>
+  <link rel="stylesheet" href="login.css">
+  <style>/* small fallback */
+    body{background:transparent}
+  </style>
+</head>
+<body>
+  <div class="login-root">
+  <a href="index.html" class="site-title"><span class="typing">SITEis</span></a>
+    <div class="login-card">
+      <div class="login-brand">
+        <div>
+          <div class="login-desc">Acesse sua conta</div>
+        </div>
+      </div>
+
+      <form id="loginForm" class="login-form" autocomplete="on">
+        <div class="form-group">
+          <label for="email">E‑mail</label>
+          <input id="email" name="email" type="email" class="form-control" required placeholder="seu@exemplo.com">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input id="password" name="password" type="password" class="form-control" required minlength="6" placeholder="******">
+        </div>
+
+        <div class="login-row">
+          <label class="remember"><input type="checkbox" name="remember"> Lembrar</label>
+          <a class="link" href="#">Esqueci a senha</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <button class="btn" type="submit">Entrar</button>
+
+  <p class="small text-center">Ou <a class="link" href="contato.html">contate-nos</a> se tiver problemas.</p>
+  <p class="signup-link"><a class="link signup" href="cadastro.html">cadrastre-se</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = form.email.value.trim();
+      const password = form.password.value;
+      if (!email || !password) return alert('Preencha todos os campos');
+      try {
+        const resp = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const json = await resp.json();
+        if (!resp.ok) return alert('Falha no login: ' + (json.error || 'Credenciais inválidas'));
+        // salvar dados básicos da sessão (Não salvar senha)
+        sessionStorage.setItem('siteis_user', JSON.stringify(json.user || {}));
+        // redirecionar apenas quando autenticado
+        window.location.href = 'index.html';
+      } catch (err) {
+        console.error('Erro ao conectar no servidor', err);
+        alert('Erro ao conectar com o servidor');
+      }
+    });
+  </script>
+</body>
+</html>
