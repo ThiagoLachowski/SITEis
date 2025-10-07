@@ -1,4 +1,4 @@
-# Backend simples para siteiS
+# Backend para siteiS
 
 Instruções rápidas para rodar o backend que serve o front-end estático em `../front`.
 
