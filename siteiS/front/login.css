@@ -1,0 +1,117 @@
+/* login.css
+   Estilo moderno e responsivo para página de login
+*/
+:root{
+  --page-bg: #f6f9fb;
+  --card-bg: #ffffff;
+  --input-bg: #eef6fb;
+  --accent-1: #0b74c9;
+  --accent-2: #07c0d8;
+  --muted: #6b7280;
+  --text: #0f1724;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;background:radial-gradient(circle at 10% 20%, rgba(6, 30, 60, 0.85) 0%, rgba(4,12,20,0.95) 50%, #000000 100%)}
+
+.login-root{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;gap:12px}
+
+.login-card{width:100%;max-width:520px;background:rgba(60,64,67,0.95);border-radius:14px;padding:36px;box-shadow:0 30px 60px rgba(2,6,23,0.12);border:1px solid rgba(255,255,255,0.12);color:#ffffff;position:relative;overflow:hidden}
+
+/* título do site fora do cartão, mesmo estilo do .logo (index.css) */
+.site-title{
+  display:inline-block;
+  font-size:3.8rem; /* agora maior */
+  font-weight:900;
+  color:#00bcd4;
+  text-decoration:none;
+  margin:0; /* sem margem extra, layout por gap do container */
+  padding:0 6px;
+  z-index:5;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.5);
+}
+
+/* animação de digitação para o título */
+.site-title .typing{
+  display:inline-block;
+  font-family: 'Segoe UI', Roboto, 'Courier New', monospace;
+  white-space:nowrap;
+  overflow:hidden;
+  border-right: 2px solid rgba(255,255,255,0.15);
+  box-sizing:content-box;
+  /* ajustar o número de passos conforme o número de caracteres (6) */
+  animation: typing 1.6s steps(6, end) 0s 1 normal both, blink-caret .7s step-end infinite;
+}
+
+@keyframes typing{
+  from { width: 0 }
+  to { width: 6ch }
+}
+
+@keyframes blink-caret{
+  from, to { border-color: transparent }
+  50% { border-color: rgba(255,255,255,0.9) }
+}
+
+/* borda tipo glass: contorno interno e brilho */
+.login-card::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  /* contorno interno branco mais visível */
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22), inset 0 6px 24px rgba(255,255,255,0.04);
+}
+
+.login-card::after{
+  content: '';
+  position: absolute;
+  left: -20%;
+  top: -40%;
+  width: 140%;
+  height: 60%;
+  transform: rotate(-18deg);
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02) 40%, rgba(255,255,255,0.00) 60%);
+  filter: blur(8px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.login-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.login-brand img{width:46px;height:46px;border-radius:10px;object-fit:cover}
+.login-brand h1{font-size:28px;margin:0;color:#ffffff;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.login-desc{color:#ffffff;font-size:20px;margin-top:8px;opacity:0.95;font-weight:600}
+
+.login-form{margin-top:8px;display:flex;flex-direction:column;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-group label{font-size:13px;color:#ffffff;opacity:0.95}
+.form-control{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);padding:12px 14px;border-radius:10px;color:#ffffff;outline:none;font-size:14px}
+.form-control::placeholder{color:rgba(255,255,255,0.6)}
+.form-control:focus{box-shadow:0 8px 30px rgba(11,116,201,0.12);border-color:var(--accent-1)}
+
+.login-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.remember{display:flex;align-items:center;gap:8px;color:#ffffff;font-size:13px;opacity:0.9}
+.link{color:var(--accent) !important;text-decoration:none;font-weight:600}
+
+.btn{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border:none;color:#fff;padding:12px;border-radius:10px;font-weight:600;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(11,116,201,0.18)}
+
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(15,23,36,0.03),transparent);margin:12px 0;border-radius:2px}
+
+.small{font-size:13px;color:#ffffff;opacity:0.85;text-align:center}
+
+@media (max-width:480px){
+  .login-card{padding:20px;border-radius:12px}
+  .login-brand h1{font-size:20px}
+  .site-title{font-size:2.4rem}
+  .login-desc{font-size:16px}
+}
+
+/* utilitários */
+.text-center{text-align:center}
+
+/* signup link abaixo do texto de ajuda */
+.signup-link{margin-top:10px;text-align:center}
+.signup-link .signup{color:var(--accent, #146da8) !important;font-size:16px;font-weight:700;text-transform:none}
+.signup-link .signup:hover{text-decoration:underline}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1759765920242,
+    "name": "thiago josk",
+    "email": "spidergd2@gmail.com",
+    "passwordHash": "$2a$10$xKJmD7JSt/cxLPkNh0hpe.XfzUdx7fW3RgcbSNSXSSQ62J/s9zrie",
+    "createdAt": "2025-10-06T15:52:00.242Z"
+  },
+  {
+    "id": 1759980640056,
+    "name": "julia josk",
+    "email": "juliapaes234@gmail.com",
+    "passwordHash": "$2a$10$2OCV9pf6NTeEbnZKfZjMMuiKk/bXhI5AL81ASqC7/yoRh5r2.tPTq",
+    "createdAt": "2025-10-09T03:30:40.056Z"
+  }
+]
